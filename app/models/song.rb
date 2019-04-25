@@ -19,10 +19,14 @@ class Song < ActiveRecord::Base
     self.genre ? self.genre.name : nil
   end
 
-  def note_contents=(ids)
-    ids.each do |id|
-      note = Post.find(id)
+  def note_contents=(notes)
+    notes.each do |n|
+      note = Post.find(n)
       self.notes << note
     end
+  end
+
+  def note_contents
+    self.note_contents
   end
 end
